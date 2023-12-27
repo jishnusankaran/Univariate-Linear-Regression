@@ -18,20 +18,27 @@ To implement univariate Linear Regression to fit a straight line using least squ
 
 ## Program
 ```
-# Implement of Multivariate linear regression and predict the output
-# Developed By: Jishnupriyan S
+# Program for Univarite linear regression using the least square method.
+# Developeb By: Jishnupriyan S
 # Reference number: 212223240061
-import pandas as pd
-from sklearn import linear_model
-data=pd.read_csv("cars (1).csv")
-x=data[['Weight','Volume']]
-y=data[['CO2']]
-regr=linear_model.LinearRegression()
-regr.fit(x,y)
-print('Coefficients:',regr.coef_)
-print('Intercept:',regr.intercept_)
-predictCO2=regr.predict([[3300,1300]])
-print("Predicted CO2 for the corresponding weight and volume",predictCO2)
+import numpy as np
+import matplotlib.pyplot as plt
+X=np.array(eval(input()))
+Y=np.array(eval(input()))
+X_mean=np.mean(X)
+Y_mean=np.array(Y)
+num=0
+demon=0
+for i in range(len(X)):
+    num+=(X[i]-X_mean)*(Y[i]-Y_mean)
+    demon+=(X[i]-X_mean)**2
+m=num/demon
+c=Y_mean-m*X_mean
+print(m,c)
+Y_pred=m*X+c
+plt.scatter(X,Y,color='red')
+plt.plot(X,Y_pred,color='black')
+plt.show()
 ```
 ## Output
 ![output](linear.jpg)
